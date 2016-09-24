@@ -158,15 +158,19 @@ smallestCommons([1,5]);
 
 ```javascript
 function smallestCommons(arr) {
-    var range = [];
-    for (var i = Math.max(arr[0], arr[1]); i >= Math.min(arr[0], arr[1]); i--) {
-    range.push(i);
+    var min = Math.min.apply(null, arr);
+    var max = Math.max.apply(null, arr);
+    var grandLCM;
+
+    for (var i=min; i<max; i++) {
+        if(i===min){
+            grandLCM = (i * (i+1))/gcd(i, i+1);
+        }else{
+            grandLCM = (grandLCM * (i+1))/gcd(grandLCM, i+1);
+        }
     }
 
-    return range.reduce(function(previousValue, currentValue) {
-    var gcdPrevCurr = gcd(previousValue, currentValue);
-    return (previousValue * currentValue) / gcdPrevCurr;
-    });
+    return grandLCM;
 
     function gcd(x, y) {    // Implements The Euclidean Algorithm
     if (y === 0)
@@ -180,13 +184,18 @@ function smallestCommons(arr) {
 smallestCommons([1,5]);
 ```
 
-:rocket: [Run Code](https://repl.it/CLn3/0)
-
 ### Code Explanation:
 
-- Make an empty array **range**.
-- All numbers between the given range are pushed to **range** using a `for` loop.
-- Unlike the intermediate solution, the `.reduce()` method is used for the implementation of Euclidean algorithm here. There's no other difference between the intermediate and advanced solutions.
+- Get the minimun (min) and maximum (max) in the **arr**.
+- Variable **grandLCM** will hold our final result.
+- In a single loop, iterate from **min** to **max-1**. 
+- In each iteration: if first iteration, compute the lcm of current and next number in range and hold intermediate result in **grandLCM** else compute the lcm of previous intermediate result and next number in range. 
+
+#### Comparism to code at: 
+:rocket: [Run Code](https://repl.it/CLn3/0)
+
+- Unlike the solution at the link above, only a single `for` loop is used for range iteration and computation.
+- The double loop (`for` and `.reduce()`) are replaced with just one `for`. That is the only difference.
 
 #### Relevant Links
 
