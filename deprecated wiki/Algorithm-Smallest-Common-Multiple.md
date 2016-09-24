@@ -206,7 +206,7 @@ smallestCommons([1,5]);
 
 If you found this page useful, you may say thanks to the contributors by copying and pasting the following line in the main chat:
 
-**`Thanks @Rafase282 @Adoyle2014 @erictleung for your help with Algorithm: Smallest Common Multiple`**
+**`Thanks @Rafase282 @Adoyle2014 @erictleung @raresight for your help with Algorithm: Smallest Common Multiple`**
 
 ## :clipboard: NOTES FOR CONTRIBUTIONS:
 
